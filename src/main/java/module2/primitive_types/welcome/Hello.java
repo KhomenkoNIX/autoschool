@@ -1,7 +1,7 @@
 package module2.primitive_types.welcome;
 
 public class Hello {
-    static String  name;
+    private static String  name;
     public static void setupName(String s){
         name = s;
     }

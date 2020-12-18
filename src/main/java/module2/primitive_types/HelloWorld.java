@@ -11,6 +11,7 @@ public class HelloWorld {
         System.out.print("Enter your name: ");
         printHelloName();
     }
+
     static void printHelloName() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String name = reader.readLine();
