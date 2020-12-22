@@ -1,4 +1,4 @@
-package module2.Arrays;
+package module2.arrays;
 /*Массив из чисел в обратном порядке
 
 1. Создать массив на 10 чисел.

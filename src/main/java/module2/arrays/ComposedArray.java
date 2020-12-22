@@ -1,4 +1,4 @@
-package module2.Arrays;
+package module2.arrays;
 /*Один большой массив и два маленьких
 
 1. Создать массив на 20 чисел.

@@ -1,4 +1,4 @@
-package module2.Arrays;
+package module2.arrays;
 /*Максимальное среди массива на 20 чисел
 
 1. В методе initializeArray():
