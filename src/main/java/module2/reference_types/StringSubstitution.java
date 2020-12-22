@@ -25,8 +25,6 @@ public class StringSubstitution {
         System.out.println("enter string: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         s = reader.readLine();
-        System.out.println(s);
-
     }
 
     public static void readSubString() throws IOException {

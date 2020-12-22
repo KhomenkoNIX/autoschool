@@ -28,6 +28,6 @@ public class CastingRound {
     public void roundNumber() {
         long roundNumber;
         roundNumber = Math.round(n);
-        System.out.printf("round number n: %f is %d ", n, roundNumber);
+        System.out.printf("round number is %d ", roundNumber);
     }
 }

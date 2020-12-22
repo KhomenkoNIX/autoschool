@@ -11,23 +11,25 @@ public class CastingSum {
     private int n;
 
     public static void main(String[] args) throws IOException {
-        CastingSum cast = new CastingSum();
-        cast.enterNumbers();
-        cast.sumNumbers();
 
+        int number = enterNumber();
+        sumDigits(number);
     }
 
-    public void enterNumbers() throws IOException {
-        System.out.println("Enter natural number n:");
+    public static int enterNumber() throws IOException {
+        System.out.println("Enter natural two-digit number n:");
         BufferedReader readerN = new BufferedReader((new InputStreamReader(System.in)));
         String strN = readerN.readLine();
-        n = Integer.parseInt(strN);
-
+        return Integer.parseInt(strN);
     }
 
-    public void sumNumbers() {
-        int sum = n + n;
-        System.out.printf("n+n:  %d + %d = %d", n, n, sum);
+    public static void sumDigits(int n) {
+        if (n < 100 && n > 9) {
+            int digitDec = n / 10;
+            int digit = n % 10;
+            int sum = digitDec + digit;
+            System.out.printf("sum of :  %d + %d = %d", digitDec, digit, sum);
+        }
     }
 
 }
