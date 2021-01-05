@@ -4,21 +4,16 @@ import java.io.IOException;
 
 /* 2 Ввести с клавиатуры четыре числа, и вывести максимальное из них.*/
 public class Ctrl_Structures_2 {
-    static int a, b, c, d;
 
     public static void main(String[] args) throws IOException {
-        a = Ctrl_Structures_1.readNumber();
-        b = Ctrl_Structures_1.readNumber();
-        c = Ctrl_Structures_1.readNumber();
-        d = Ctrl_Structures_1.readNumber();
-        int[] array = new int[] {a, b, c, d};
-        selectionSort(array);
+
+        int[] array = UsefulMethods.readNumbersInArray(4);
         //print max value
-        System.out.println(array[3]);
+        System.out.println(selectMaxSort(array));
     }
 
     //Selection sort method
-    public static void selectionSort(int[] array) {
+    public static int selectMaxSort(int[] array) {
         for (int i = 0; i < array.length; i++) {
             int min = array[i];
             int minId = i;
@@ -33,5 +28,6 @@ public class Ctrl_Structures_2 {
             array[i] = min;
             array[minId] = temp;
         }
+        return array[array.length - 1];
     }
 }

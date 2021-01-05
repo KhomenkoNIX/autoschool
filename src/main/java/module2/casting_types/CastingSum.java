@@ -15,7 +15,7 @@ public class CastingSum {
         int number = enterNumber();
         sumDigits(number);
     }
-//test
+
     public static int enterNumber() throws IOException {
         System.out.println("Enter natural two-digit number n:");
         BufferedReader readerN = new BufferedReader((new InputStreamReader(System.in)));

@@ -11,13 +11,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CheckMaxValue {
-    public static void main(String[] args) throws IOException {
 
-        showMaxValue(initializeArray());
+    public static void main(String[] args) throws IOException {
+        int sizeArray = 5;
+        showMaxValue(initializeArray(sizeArray));
     }
 
-    public static int[] initializeArray() throws IOException {
-        int[] list = new int[20];
+    public static int[] initializeArray(int sizeArray) throws IOException {
+        int[] list = new int[sizeArray];
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter 20 numbers:");
         for (int i = 0; i < list.length; i++) {

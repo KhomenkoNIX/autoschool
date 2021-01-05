@@ -41,7 +41,7 @@ public class ComposedArray {
         }
         //from the second half of big array
         for (int i = 0; i < secondArray.length; i++) {
-            secondArray[i] = bigArray[i+10];
+            secondArray[i] = bigArray[i+ firstArray.length];
         }
     }
     public static void showIntArray(int[] arr) {

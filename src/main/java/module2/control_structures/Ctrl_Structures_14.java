@@ -13,10 +13,13 @@ import java.io.IOException;
 public class Ctrl_Structures_14 {
 
     public static void main(String[] args) throws IOException {
-        int m = 0;
-        int n = 0;
-        m = Ctrl_Structures_1.readNumber();
-        n = Ctrl_Structures_1.readNumber();
+
+        int m =UsefulMethods.readNumber();
+        int n =UsefulMethods.readNumber();
+        printRectangle(m, n);
+    }
+
+    public static void printRectangle(int m, int n) {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(8);

@@ -17,17 +17,13 @@ public class Ctrl_Structures_10 {
 
     public static void main(String[] args) throws IOException {
 
-        int number = 0;
-        String line = "";
-
-        number = Ctrl_Structures_1.readNumber();
-        line = readString();
+        int number = UsefulMethods.readNumber();
+        String line = readString();
 
         while (number > 0) {
             number--;
             System.out.println(line);
         }
-
     }
 
     public static String readString() throws IOException {
