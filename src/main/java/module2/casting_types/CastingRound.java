@@ -11,10 +11,9 @@ public class CastingRound {
 
     public static void main(String[] args) throws IOException {
         CastingRound cast = new CastingRound();
-
-        double d = cast.enterNumbers();
-
-        System.out.printf("round number is %d ", cast.roundNumber(d));
+        //double d = cast.enterNumbers();
+        System.out.println( (int) (-23.2 + 0.5));
+        //System.out.printf("round number is %d ", cast.roundNumber(d));
 
     }
 
@@ -23,20 +22,11 @@ public class CastingRound {
         BufferedReader readerN = new BufferedReader((new InputStreamReader(System.in)));
         String inputNumber = readerN.readLine();
         return Double.parseDouble(inputNumber);
-
     }
 
     public long roundNumber(double d) {
-        long roundNumber;
-        String inputNumber=Double.toString(d);
-        String temp = inputNumber.substring(0, inputNumber.indexOf('.'));
-
-        if (5 <= Character.getNumericValue(inputNumber.charAt(inputNumber.indexOf('.') + 1))) {
-            roundNumber = Long.parseLong(temp) + 1;
-        } else {
-            roundNumber = Long.parseLong(temp);
-        }
-        return roundNumber;
+        long number = (long) d;
+        int defineRound =  (int)((d - (double) number) * 10);
+        return 5 <= defineRound ? number+1 : number;
     }
-
 }
