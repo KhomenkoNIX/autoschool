@@ -22,8 +22,13 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
+        Figure[] arr = createFiguresArray(10, 100);
+        Figure[] sortedArray = sortingArrayByArea(arr);
+        showArray(sortedArray);
     }
-    public static void createFiguresArray() {
+
+    //method of creating figures array with parameters : size of array and variable offset by x coordinate- in order not to cross figures
+    public static Figure[] createFiguresArray(int size, double offset) {
 
         Figure[] figures = new Figure[10];
         Random random = new Random();
@@ -32,29 +37,41 @@ public class Main {
             int x = random.nextInt(2 + 1);
             switch (x) {
                 case 0:
-                    Circle circle = new Circle();
+                    Circle circle = new Circle(offset);
+                    figures[i] = circle;
                     break;
                 case 1:
-                    Square square = new Square();
+                    Square square = new Square(offset);
+                    figures[i] = square;
                     break;
                 case 2:
-                    Triangle triangle = new Triangle();
-
-
+                    Triangle triangle = new Triangle(offset);
+                    figures[i] = triangle;
+                default:
             }
+            offset += 100;
         }
+        return figures;
     }
-    public static void sortingArrayByArea(Figure[] arr) {
+
+    public static Figure[] sortingArrayByArea(Figure[] arr) {
 
         //Bubble sorter
-        /*for (int i = 0; i < array.length - 1; i++) {
-            for (int j = (array.length - 1); j > i; j--) {
-                if (array[j - 1] > array[j]) {
-                    int temp = array[j - 1];
-                    array[j - 1] = array[j];
-                    array[j] = temp;
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = (arr.length - 1); j > i; j--) {
+                if (arr[j - 1].getArea() > arr[j].getArea()) {
+                    Figure temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
                 }
             }
-        }*/
+        }
+        return arr;
     }
+
+    public static void showArray(Figure[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i].toString());
+        }
     }
+}
