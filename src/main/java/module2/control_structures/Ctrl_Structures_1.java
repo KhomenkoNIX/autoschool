@@ -11,24 +11,14 @@ import java.io.InputStreamReader;
 
 public class Ctrl_Structures_1 {
     public static void main(String[] args) throws IOException {
-
-        int a = readNumber();
-        int b = readNumber();
-
-        if (a == b) {
-            System.out.println("a=b");
-        } else if (a < b)
-            System.out.println("a is min: " + a);
-        else
-            System.out.println("b is min: " + b);
-
+        int[] ab = UsefulMethods.readNumbersInArray(2);
+        printMinNumber(ab);
     }
 
-    public static int readNumber() throws IOException {
-        int n = 0;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter number: ");
-        n = Integer.parseInt(reader.readLine());
-        return n;
+    public static void printMinNumber(int[] arr) {
+        if (arr[0] == arr[1])
+            System.out.println("numbers are equal");
+        else
+            System.out.println("min number is: " + (arr[0] < arr[1] ? arr[0] : arr[1]));
     }
 }

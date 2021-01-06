@@ -7,17 +7,22 @@ welcome() - формирует и выводит в консоль привет�
 В Main2 классе подключить этот пакет, и вначале программы запросить имя человека, присвоить его переменной класса Hello, потом поприветствовать его,
 в конце - попрощаться перед закрытием программы. Между ‘hello’ и ‘bye’ будет ваше “Hello, world!”..*/
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.SQLOutput;
+
 public class Hello {
-    private static String  name;
-    public static void setupName(String s){
-        name = s;
+    private  String  name;
+
+    public  void setupName(String s) {
+        this.name = s;
     }
-    public static void welcome(){
-            String s= "Hello, %name%";
-        System.out.println(s);
+
+    public  void welcome(){
+        System.out.printf("Hello, %s \n",name);
     }
-    public static void byeBay(){
-        String s= "Bye, %name%";
-        System.out.println(s);
+    public  void byeBay(){
+        System.out.printf("Bye, %s \n",name);
     }
 }

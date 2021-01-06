@@ -6,11 +6,8 @@ import java.io.IOException;
 public class Ctrl_Structures_6 {
     public static void main(String[] args) throws IOException {
 
-        int age = 0;
-        String name = "";
-
-        age = Ctrl_Structures_1.readNumber();
-        name = Ctrl_Structures_4.readName();
+        int age = UsefulMethods.readNumber();
+        String name = Ctrl_Structures_4.readName();
 
         if (age > 20)
             System.out.println("И 18-ти достаточно»");

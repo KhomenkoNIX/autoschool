@@ -10,19 +10,23 @@ import java.util.Comparator;
 не обрабатывать.*/
 
 public class SplitParseString {
-    private static String s;
+
     public static void main(String[] args) throws IOException {
-        s = readString();
-        printBiggestWord(s);
+        //enter the string
+        String s = readString();
+        //print the biggest word in string s
+        System.out.println(sortBiggestWord(s));
     }
+
     public static String readString() throws IOException {
         System.out.println("enter string: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         return reader.readLine();
     }
 
-    public static void printBiggestWord(String s){
-       //Bubble sorting
+    //method returns biggest word
+    public static String sortBiggestWord(String s) {
+        //Bubble sorting
         String[] array = s.split(" ");
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = (array.length - 1); j > i; j--) {
@@ -33,6 +37,6 @@ public class SplitParseString {
                 }
             }
         }
-        System.out.println(array[(array.length-1)]);
+        return array[array.length - 1];
     }
 }

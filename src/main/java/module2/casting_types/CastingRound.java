@@ -8,26 +8,25 @@ import java.io.InputStreamReader;
    Создайте программу, округляющую число n до ближайшего целого и выводящую результат на экран.*/
 
 public class CastingRound {
-    private double n;
 
     public static void main(String[] args) throws IOException {
         CastingRound cast = new CastingRound();
-        cast.enterNumbers();
-        cast.roundNumber();
+        //double d = cast.enterNumbers();
+        System.out.println( (int) (-23.2 + 0.5));
+        //System.out.printf("round number is %d ", cast.roundNumber(d));
 
     }
 
-    public void enterNumbers() throws IOException {
+    public double enterNumbers() throws IOException {
         System.out.println("Enter float number n:");
         BufferedReader readerN = new BufferedReader((new InputStreamReader(System.in)));
-        String strN = readerN.readLine();
-        n = Double.parseDouble(strN);
-
+        String inputNumber = readerN.readLine();
+        return Double.parseDouble(inputNumber);
     }
 
-    public void roundNumber() {
-        long roundNumber;
-        roundNumber = Math.round(n);
-        System.out.printf("round number is %d ", roundNumber);
+    public long roundNumber(double d) {
+        long number = (long) d;
+        int defineRound =  (int)((d - (double) number) * 10);
+        return 5 <= defineRound ? number+1 : number;
     }
 }

@@ -1,4 +1,4 @@
-package module2.Arrays;
+package module2.arrays;
 /*Один большой массив и два маленьких
 
 1. Создать массив на 20 чисел.
@@ -41,7 +41,7 @@ public class ComposedArray {
         }
         //from the second half of big array
         for (int i = 0; i < secondArray.length; i++) {
-            secondArray[i] = bigArray[i+10];
+            secondArray[i] = bigArray[i+ firstArray.length];
         }
     }
     public static void showIntArray(int[] arr) {

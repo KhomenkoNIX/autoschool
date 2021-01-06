@@ -13,30 +13,16 @@ public class CastingVariableChange {
 
     public static void main(String[] args) {
 
-        int temporaryA = changeA(a, b);
-        int temporaryB = changeB(a, c);
-        int temporaryC = changeC(a, b, c);
-        a = temporaryA;
-        b = temporaryB;
-        c = temporaryC;
+
+        CastingVariableChange varChange = new CastingVariableChange();
+        varChange.ChangeABC(a, b, c);
         System.out.println("Given: a = 2, b = 8, c = 15\nAfter:");
-        System.out.println("a = a+b = " + a);
-        System.out.println("b = c+a = " + b);
-        System.out.println("c = a+b+c = " + c);
+        System.out.println("a = " + a + ", b = " + b + ", c = " + c);
     }
 
-    public static int changeA(int a, int b) {
-        a = a + b;
-        return a;
-    }
-
-    public static int changeB(int a, int c) {
-        a = c + a;
-        return a;
-    }
-
-    public static int changeC(int a, int b, int c) {
-        c = a + b + c;
-        return c;
+    public void ChangeABC(int a, int b, int c) {
+        this.a = a + b;
+        this.b = c - a;
+        this.c = a + b + c;
     }
 }

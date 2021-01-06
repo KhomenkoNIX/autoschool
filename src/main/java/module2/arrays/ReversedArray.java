@@ -1,4 +1,4 @@
-package module2.Arrays;
+package module2.arrays;
 /*Массив из строчек в обратном порядке
 
 1. Создать массив на 10 строчек.
@@ -12,20 +12,21 @@ import java.io.InputStreamReader;
 public class ReversedArray {
 
     public static void main(String[] args) throws IOException {
-        String[] list = new String[10];
-        createArray(list);
+
+        String[] list = createAndPopulateStringArray(10, 8);
         printReversedArray(list);
     }
 
-    public static void createArray(String[] list) throws IOException {
-
+    public static String[] createAndPopulateStringArray(int size, int populate) throws IOException {
+        String[] list = new String[size];
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter 8 strings:");
-        for (int i = 0; i < 8; i++) {
+        System.out.printf("Enter %d strings: ", populate);
 
+        for (int i = 0; i < populate; i++) {
             String s = reader.readLine();
             list[i] = s;
         }
+        return list;
     }
 
     public static void printReversedArray(String[] arr) {

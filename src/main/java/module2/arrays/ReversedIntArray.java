@@ -1,4 +1,4 @@
-package module2.Arrays;
+package module2.arrays;
 /*Массив из чисел в обратном порядке
 
 1. Создать массив на 10 чисел.
@@ -11,17 +11,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ReversedIntArray {
-    static int[] list = new int[10];
 
     public static void main(String[] args) throws IOException {
 
-        createArray();
-        int[] reversedArray = createReversedIntArray(list);
+        int[] arr = createArray(10);
+        int[] reversedArray = createReversedIntArray(arr);
         showArray(reversedArray);
     }
 
-    public static void createArray() throws IOException {
-
+    public static int[] createArray(int size) throws IOException {
+        int[] list = new int[size];
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter 10 numbers:");
         for (int i = 0; i < list.length; i++) {
@@ -29,21 +28,21 @@ public class ReversedIntArray {
             String s = reader.readLine();
             list[i] = Integer.parseInt(s);
         }
+        return list;
     }
 
     public static int[] createReversedIntArray(int[] arr) {
 
         if (arr.length > 0) {
-            int[] array = new int[arr.length];
-            int counter = list.length - 1;
+            int[] arrayReversed = new int[arr.length];
+            int counter = arr.length - 1;
 
-            for (int i = 0; i < list.length; i++) {
+            for (int i = 0; i < arr.length; i++) {
 
-                array[counter] = arr[i];
-                System.out.println(array[counter]);
+                arrayReversed[counter] = arr[i];
                 counter--;
             }
-            return array;
+            return arrayReversed;
         } else {
             System.out.println("Not initialized array is passed and returned");
             return new int[0];
