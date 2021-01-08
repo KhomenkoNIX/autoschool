@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-
+        //creating array of not crossing 10 random figures
         Figure[] arr = createFiguresArray(10, 100);
         Figure[] sortedArray = sortingArrayByArea(arr);
         showArray(sortedArray);
