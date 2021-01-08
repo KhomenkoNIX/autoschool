@@ -29,6 +29,13 @@ public class Square extends Figure {
         return D;
     }
 
+    public void setA(Point a) {
+        A = a;
+    }
+    public void setC(Point c) {
+        C = c;
+    }
+
     public Square() {
         //set random diagonal points of square
         A = new Point();
@@ -49,7 +56,7 @@ public class Square extends Figure {
         calculateArea();
     }
 
-    private void calculateSquareTwoPoints(Point A, Point C) {
+    public void calculateSquareTwoPoints(Point A, Point C) {
         // calculate center point of crossing diagonal
         double x0 = (A.getX() + C.getX()) / 2;
         double y0 = (A.getY() + C.getY()) / 2;

@@ -36,6 +36,16 @@ public class Triangle extends Figure {
         return C;
     }
 
+    public void setA(Point a) {
+        A = a;
+    }
+    public void setB(Point b) {
+        B = b;
+    }
+    public void setC(Point c) {
+        C= c;
+    }
+
     @Override
     public double getArea() {
         return this.area;

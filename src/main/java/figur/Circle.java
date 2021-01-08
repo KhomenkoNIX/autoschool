@@ -30,6 +30,14 @@ public class Circle extends Figure {
         return B;
     }
 
+    public void setA(Point a) {
+        A = a;
+    }
+
+    public void setB(Point b) {
+        B = b;
+    }
+
     public double getArea() {
         return area;
     }
