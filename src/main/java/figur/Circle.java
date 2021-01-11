@@ -30,6 +30,12 @@ public class Circle extends Figure {
         return B;
     }
 
+// sorry for this crutch -it needed to draw figures(Liskov substitution principle I should have learned earlier)
+    public Point getC() {
+        System.out.println("There is no C point in Circle.  so returned null");
+         return null;
+    }
+
     public void setA(Point a) {
         A = a;
     }

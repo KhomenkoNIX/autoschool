@@ -12,6 +12,11 @@ public abstract class Figure {
 
     public abstract Point[] getCoordinates();
 
+    public abstract Point getA();
+    public abstract Point getB();
+    public abstract Point getC();
+
+
     public void showCoordinates() {
         Point[] points = this.getCoordinates();
         for (int i = 0; i < points.length; i++) {

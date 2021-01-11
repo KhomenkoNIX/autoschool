@@ -81,8 +81,8 @@ public class Square extends Figure {
 
     public void calculateArea() {
         //formula: side AB = √(xb - xa)pow2 + (yb - ya)pow2
-        double AB = Math.sqrt(Math.pow((A.getX() - B.getX()), 2) + Math.pow((A.getY() - B.getY()), 2));
-        area = AB * AB;
+        double sideAB = Math.sqrt(Math.pow((A.getX() - B.getX()), 2) + Math.pow((A.getY() - B.getY()), 2));
+        area = sideAB * sideAB;
         // cut area to two signs after a dot
         area = roundTwoSigns(area);
     }
