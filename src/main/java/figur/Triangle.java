@@ -2,48 +2,51 @@ package figur;
 
 public class Triangle extends Figure {
 
-    private Point A;
-    private Point B;
-    private Point C;
+    private Point a;
+    private Point b;
+    private Point c;
     private String name;
     private double area;
 
     public Triangle() {
-        A = new Point();
-        B = new Point();
-        C = new Point();
+        a = new Point();
+        b = new Point();
+        c = new Point();
         name = setRandomName();
         calculateArea();
 
     }
+
     public Triangle(double offset) {
-        A = new Point(offset);
-        B = new Point(offset);
-        C = new Point(offset);
+        a = new Point(offset);
+        b = new Point(offset);
+        c = new Point(offset);
         name = setRandomName();
-        calculateArea();
+        this.area = calculateArea();
     }
 
     public Point getA() {
-        return A;
+        return a;
     }
 
     public Point getB() {
-        return B;
+        return b;
     }
 
     public Point getC() {
-        return C;
+        return c;
     }
 
     public void setA(Point a) {
-        A = a;
+        this.a = a;
     }
+
     public void setB(Point b) {
-        B = b;
+        this.b = b;
     }
+
     public void setC(Point c) {
-        C= c;
+        this.c = c;
     }
 
     @Override
@@ -53,16 +56,16 @@ public class Triangle extends Figure {
 
     @Override
     public Point[] getCoordinates() {
-        Point[] points = new Point[]{A, B, C};
+        Point[] points = new Point[]{a, b, c};
         return points;
     }
 
-    @Override
-    public void calculateArea() {
+    public double calculateArea() {
         //formula Geron: S = 1/2 * (x2-x1)*(y3-y1)-(x3-x1)(y2-y1)
-        area = Math.abs(0.5 * ((B.getX() - A.getX()) * (C.getY() - A.getY()) - (C.getX() - A.getX()) * (B.getY() - A.getY())));
+        area = Math.abs(0.5 * ((b.getX() - a.getX()) * (c.getY() - a.getY()) - (c.getX() - a.getX()) * (b.getY() - a.getY())));
         // cut area to two signs after a dot
         area = roundTwoSigns(area);
+        return area;
     }
 
     @Override

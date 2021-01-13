@@ -4,18 +4,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Figure {
 
-    public abstract void calculateArea();
-
     public abstract String getName();
 
     public abstract double getArea();
 
     public abstract Point[] getCoordinates();
-
-    public abstract Point getA();
-    public abstract Point getB();
-    public abstract Point getC();
-
 
     public void showCoordinates() {
         Point[] points = this.getCoordinates();

@@ -30,7 +30,6 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         //creating array of not crossing 10 random figures
-
         Main main = new Main();
         Figure[] array = main.createFiguresArray(10, 0);
         Figure[] sortedArray = sortingArrayByArea(array);
@@ -38,15 +37,16 @@ public class Main {
 
         //draw figures in app
         main.startDrawApp(sortedArray);
-        main.drawShapes.getDefaultCloseOperation();
+        //main.drawShapes.p.updateUI();
+       // main.drawShapes.getDefaultCloseOperation();
     }
 
     //method of creating figures array with parameters : size of array and variable offset by x coordinate- in order not to cross figures
     public Figure[] createFiguresArray(int size, double offset) {
 
-        Figure[] figures = new Figure[10];
+        Figure[] figures = new Figure[size];
         Random random = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < size; i++) {
 
             int x = random.nextInt(2 + 1);
             switch (x) {
@@ -91,6 +91,8 @@ public class Main {
 
     public void startDrawApp(Figure[] figure) {
         drawShapes = new DrawShapes(figure);
-
+    }
+    public void updateUI(){
+        drawShapes.p.updateUI();
     }
 }
