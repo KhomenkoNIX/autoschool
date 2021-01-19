@@ -14,7 +14,14 @@ public class Triangle extends Figure {
         c = new Point();
         name = setRandomName();
         calculateArea();
+    }
 
+    public Triangle(Point a, Point b, Point c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        name = setRandomName();
+        calculateArea();
     }
 
     public Triangle(double offset) {
@@ -60,7 +67,7 @@ public class Triangle extends Figure {
         return points;
     }
 
-    public double calculateArea() {
+    private double calculateArea() {
         //formula Geron: S = 1/2 * (x2-x1)*(y3-y1)-(x3-x1)(y2-y1)
         area = Math.abs(0.5 * ((b.getX() - a.getX()) * (c.getY() - a.getY()) - (c.getX() - a.getX()) * (b.getY() - a.getY())));
         // cut area to two signs after a dot

@@ -18,6 +18,14 @@ public class Square extends Figure {
         calculateArea();
     }
 
+    public Square(Point a, Point c) {
+        //set  diagonal points of square
+        this.a = a;
+        this.c = c;
+        calculateSquareTwoPoints(this.a, this.c);
+        name = setRandomName();
+        calculateArea();
+    }
     //constructor with offset - not to cross figures
 
     public Square(double offset) {
@@ -80,7 +88,8 @@ public class Square extends Figure {
         return points;
     }
 
-    public double calculateArea() {
+    //@Override
+    private double calculateArea() {
         //formula: side AB = √(xb - xa)pow2 + (yb - ya)pow2
         double sideAB = Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2));
         area = sideAB * sideAB;

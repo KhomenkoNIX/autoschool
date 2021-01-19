@@ -7,9 +7,17 @@ public class Circle extends Figure {
     private String name;
     private double area;
 
+    // constructor with random Points
     public Circle() {
         a = new Point();
         b = new Point();
+        name = setRandomName();
+        calculateArea();
+    }
+
+    public Circle(Point a, Point b) {
+        this.a = a;
+        this.b = b;
         name = setRandomName();
         calculateArea();
     }
@@ -19,7 +27,7 @@ public class Circle extends Figure {
         a = new Point(offset);
         b = new Point(offset);
         name = setRandomName();
-        calculateArea();
+        area = calculateArea();
     }
 
     public Point getA() {
@@ -28,12 +36,6 @@ public class Circle extends Figure {
 
     public Point getB() {
         return b;
-    }
-
-    // sorry for this crutch -it needed to draw figures(Liskov substitution principle I should have learned earlier)
-    public Point getC() {
-        System.out.println("There is no C point in Circle.  so returned null");
-        return null;
     }
 
     public void setA(Point a) {
@@ -54,7 +56,7 @@ public class Circle extends Figure {
         return points;
     }
 
-    public double calculateArea() {
+    private double calculateArea() {
         //formula S = Pi * r * r;
         //formula: radius = √(xb - xa)pow2 + (yb - ya)pow2
         double radius = Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2));

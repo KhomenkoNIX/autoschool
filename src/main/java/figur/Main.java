@@ -37,8 +37,6 @@ public class Main {
 
         //draw figures in app
         main.startDrawApp(sortedArray);
-        //main.drawShapes.p.updateUI();
-       // main.drawShapes.getDefaultCloseOperation();
     }
 
     //method of creating figures array with parameters : size of array and variable offset by x coordinate- in order not to cross figures
@@ -92,7 +90,8 @@ public class Main {
     public void startDrawApp(Figure[] figure) {
         drawShapes = new DrawShapes(figure);
     }
-    public void updateUI(){
+
+    public void updateUI() {
         drawShapes.p.updateUI();
     }
 }
