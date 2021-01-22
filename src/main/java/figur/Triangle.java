@@ -2,59 +2,36 @@ package figur;
 
 public class Triangle extends Figure {
 
-    private Point a;
-    private Point b;
-    private Point c;
+    private final Point A;
+    private final Point B;
+    private final Point C;
     private String name;
     private double area;
 
     public Triangle() {
-        a = new Point();
-        b = new Point();
-        c = new Point();
-        name = setRandomName();
-        calculateArea();
+        A = new Point();
+        B = new Point();
+        C = new Point();
+        name = super.setRandomName();
+        area = calculateArea();
     }
 
     public Triangle(Point a, Point b, Point c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        this.A = a;
+        this.B = b;
+        this.C = c;
         name = setRandomName();
-        calculateArea();
+        area = calculateArea();
     }
 
     public Triangle(double offset) {
-        a = new Point(offset);
-        b = new Point(offset);
-        c = new Point(offset);
+        A = new Point(offset);
+        B = new Point(offset);
+        C = new Point(offset);
         name = setRandomName();
         this.area = calculateArea();
     }
 
-    public Point getA() {
-        return a;
-    }
-
-    public Point getB() {
-        return b;
-    }
-
-    public Point getC() {
-        return c;
-    }
-
-    public void setA(Point a) {
-        this.a = a;
-    }
-
-    public void setB(Point b) {
-        this.b = b;
-    }
-
-    public void setC(Point c) {
-        this.c = c;
-    }
 
     @Override
     public double getArea() {
@@ -63,13 +40,13 @@ public class Triangle extends Figure {
 
     @Override
     public Point[] getCoordinates() {
-        Point[] points = new Point[]{a, b, c};
+        Point[] points = new Point[]{A, B, C};
         return points;
     }
 
     private double calculateArea() {
         //formula Geron: S = 1/2 * (x2-x1)*(y3-y1)-(x3-x1)(y2-y1)
-        area = Math.abs(0.5 * ((b.getX() - a.getX()) * (c.getY() - a.getY()) - (c.getX() - a.getX()) * (b.getY() - a.getY())));
+        area = Math.abs(0.5 * ((B.getX() - A.getX()) * (C.getY() - A.getY()) - (C.getX() - A.getX()) * (B.getY() - A.getY())));
         // cut area to two signs after a dot
         area = roundTwoSigns(area);
         return area;

@@ -1,26 +1,25 @@
 package figur;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Point {
-    private double x;
-    private double y;
+    private final double X;
+    private double Y;
 
     public Point() {
-        x = setRandomCoordinate();
-        y = setRandomCoordinate();
+        X = setRandomCoordinate();
+        Y = setRandomCoordinate();
     }
 
     public Point(double offsetX) {
         //offset to x coordinate
-        x = setRandomCoordinate() + offsetX;
-        y = setRandomCoordinate();
+        X = setRandomCoordinate() + offsetX;
+        Y = setRandomCoordinate();
     }
 
     public Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+        this.X = x;
+        this.Y = y;
     }
 
     private double setRandomCoordinate() {
@@ -31,15 +30,15 @@ public class Point {
     }
 
     public double getX() {
-        return x;
+        return X;
     }
 
     public double getY() {
-        return y;
+        return Y;
     }
 
     @Override
     public String toString() {
-        return "Point{" + "x=" + x + ", y=" + y + '}';
+        return "Point{" + "x=" + X + ", y=" + Y + '}';
     }
 }

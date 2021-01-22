@@ -1,38 +1,50 @@
 package figur;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Square extends Figure {
 
-    private Point a;
-    private Point b;
-    private Point c;
-    private Point d;
-    private String name;
-    private double area;
+    private final Point A;
+    private final Point B;
+    private final Point C;
+    private final Point D;
+    private final String name;
+    private final double area;
 
     public Square() {
         //set random diagonal points of square
-        a = new Point();
-        c = new Point();
-        calculateSquareTwoPoints(a, c);
-        name = setRandomName();
-        calculateArea();
+        A = new Point();
+        C = new Point();
+        //create temporal variable Map with calculated coordinates of B and D points
+        Map<String, Double> coordinatesBAndD = calculateSquareCoordinatesBPointAndD(A, C);
+        B = new Point(coordinatesBAndD.get("xB"), coordinatesBAndD.get("yB"));
+        D = new Point(coordinatesBAndD.get("xD"), coordinatesBAndD.get("yD"));
+        name = super.setRandomName();
+        area = calculateArea();
     }
 
     public Square(Point a, Point c) {
         //set  diagonal points of square
-        this.a = a;
-        this.c = c;
-        calculateSquareTwoPoints(this.a, this.c);
-        name = setRandomName();
-        calculateArea();
+        this.A = a;
+        this.C = c;
+        //create temporal variable Map with calculated coordinates
+        Map<String, Double> coordinatesBAndD = calculateSquareCoordinatesBPointAndD(A, C);
+        B = new Point(coordinatesBAndD.get("xB"), coordinatesBAndD.get("yB"));
+        D = new Point(coordinatesBAndD.get("xD"), coordinatesBAndD.get("yD"));
+        name = super.setRandomName();
+        area = calculateArea();
     }
     //constructor with offset - not to cross figures
 
     public Square(double offset) {
         //set random diagonal points of square
-        a = new Point(offset);
-        c = new Point(offset);
-        calculateSquareTwoPoints(a, c);
+        A = new Point(offset);
+        C = new Point(offset);
+        //create temporal variable Map with calculated coordinates
+        Map<String, Double> coordinatesBAndD = calculateSquareCoordinatesBPointAndD(A, C);
+        B = new Point(coordinatesBAndD.get("xB"), coordinatesBAndD.get("yB"));
+        D = new Point(coordinatesBAndD.get("xD"), coordinatesBAndD.get("yD"));
         name = setRandomName();
         this.area = calculateArea();
         ;
@@ -42,57 +54,39 @@ public class Square extends Figure {
         return area;
     }
 
-    public Point getA() {
-        return a;
-    }
-
-    public Point getB() {
-        return b;
-    }
-
-    public Point getC() {
-        return c;
-    }
-
-    public Point getD() {
-        return d;
-    }
-
-    public void setA(Point a) {
-        this.a = a;
-    }
-
-    public void setC(Point c) {
-        this.c = c;
-    }
-
-    public void calculateSquareTwoPoints(Point A, Point C) {
+    private Map<String, Double> calculateSquareCoordinatesBPointAndD(Point a, Point c) {
+        //creating collection of coordinates for B and D points.
+        Map<String, Double> coordinatesBAndD = new HashMap<String, Double>();
         // calculate center point of crossing diagonal
-        double x0 = (A.getX() + C.getX()) / 2;
-        double y0 = (A.getY() + C.getY()) / 2;
+        double x0 = (a.getX() + c.getX()) / 2;
+        double y0 = (a.getY() + c.getY()) / 2;
         //calculate vector of the point
-        double xVector = A.getX() - x0;
-        double yVector = A.getY() - y0;
+        double xVector = a.getX() - x0;
+        double yVector = a.getY() - y0;
         // Point B coordinates:
         double xB = x0 - yVector;
         double yB = y0 + xVector;
-        b = new Point(xB, yB);
+        coordinatesBAndD.put("xB", xB);
+        coordinatesBAndD.put("yB", yB);
+        // Point D coordinates:
         double xD = x0 + yVector;
         double yD = y0 - xVector;
-        d = new Point(xD, yD);
+        coordinatesBAndD.put("xD", xD);
+        coordinatesBAndD.put("yD", yD);
+        return coordinatesBAndD;
     }
 
     @Override
     public Point[] getCoordinates() {
-        Point[] points = new Point[]{a, b, c, d};
+        Point[] points = new Point[]{A, B, C, D};
         return points;
     }
 
     //@Override
     private double calculateArea() {
         //formula: side AB = √(xb - xa)pow2 + (yb - ya)pow2
-        double sideAB = Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2));
-        area = sideAB * sideAB;
+        double sideAB = Math.sqrt(Math.pow((A.getX() - B.getX()), 2) + Math.pow((A.getY() - B.getY()), 2));
+        double area = sideAB * sideAB;
         // cut area to two signs after a dot
         area = roundTwoSigns(area);
         return area;
