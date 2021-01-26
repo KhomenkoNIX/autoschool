@@ -16,10 +16,8 @@ public class Square extends Figure {
         //set random diagonal points of square
         A = new Point();
         C = new Point();
-        //create temporal variable Map with calculated coordinates of B and D points
-        Map<String, Double> coordinatesBAndD = calculateSquareCoordinatesBPointAndD(A, C);
-        B = new Point(coordinatesBAndD.get("xB"), coordinatesBAndD.get("yB"));
-        D = new Point(coordinatesBAndD.get("xD"), coordinatesBAndD.get("yD"));
+        B = new Point(calculateBPointCoordinate(A, C));
+        D = new Point(calculateBPointCoordinate(A, C));
         name = super.setRandomName();
         area = calculateArea();
     }
@@ -28,10 +26,8 @@ public class Square extends Figure {
         //set  diagonal points of square
         this.A = a;
         this.C = c;
-        //create temporal variable Map with calculated coordinates
-        Map<String, Double> coordinatesBAndD = calculateSquareCoordinatesBPointAndD(A, C);
-        B = new Point(coordinatesBAndD.get("xB"), coordinatesBAndD.get("yB"));
-        D = new Point(coordinatesBAndD.get("xD"), coordinatesBAndD.get("yD"));
+        B = new Point(calculateBPointCoordinate(A, C));
+        D = new Point(calculateBPointCoordinate(A, C));
         name = super.setRandomName();
         area = calculateArea();
     }
@@ -41,20 +37,18 @@ public class Square extends Figure {
         //set random diagonal points of square
         A = new Point(offset);
         C = new Point(offset);
-        //create temporal variable Map with calculated coordinates
-        Map<String, Double> coordinatesBAndD = calculateSquareCoordinatesBPointAndD(A, C);
-        B = new Point(coordinatesBAndD.get("xB"), coordinatesBAndD.get("yB"));
-        D = new Point(coordinatesBAndD.get("xD"), coordinatesBAndD.get("yD"));
+        B = new Point(calculateBPointCoordinate(A, C));
+        D = new Point(calculateBPointCoordinate(A, C));
         name = setRandomName();
         this.area = calculateArea();
-        ;
+
     }
 
     public double getArea() {
         return area;
     }
 
-    private Map<String, Double> calculateSquareCoordinatesBPointAndD(Point a, Point c) {
+    /*private Map<String, Double> calculateSquareCoordinatesBPointAndD(Point a, Point c) {
         //creating collection of coordinates for B and D points.
         Map<String, Double> coordinatesBAndD = new HashMap<String, Double>();
         // calculate center point of crossing diagonal
@@ -74,6 +68,35 @@ public class Square extends Figure {
         coordinatesBAndD.put("xD", xD);
         coordinatesBAndD.put("yD", yD);
         return coordinatesBAndD;
+    } */
+    private double[] calculateBPointCoordinate(Point a, Point c) {
+
+        // calculate center point of crossing diagonal
+        double x0 = (a.getX() + c.getX()) / 2;
+        double y0 = (a.getY() + c.getY()) / 2;
+        //calculate vector of the point
+        double xVector = a.getX() - x0;
+        double yVector = a.getY() - y0;
+        // Point B coordinates:
+        double xB = x0 - yVector;
+        double yB = y0 + xVector;
+        double[] coordinatesB = new double[]{xB, yB};
+        return coordinatesB;
+    }
+
+    private double[] calculateDPointCoordinates(Point a, Point c) {
+        // calculate center point of crossing diagonal
+        double x0 = (a.getX() + c.getX()) / 2;
+        double y0 = (a.getY() + c.getY()) / 2;
+        //calculate vector of the point
+        double xVector = a.getX() - x0;
+        double yVector = a.getY() - y0;
+        ;
+        // Point D coordinates:
+        double xD = x0 + yVector;
+        double yD = y0 - xVector;
+        double[] coordinatesD = new double[]{xD, yD};
+        return coordinatesD;
     }
 
     @Override

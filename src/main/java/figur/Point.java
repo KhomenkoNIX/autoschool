@@ -21,6 +21,13 @@ public class Point {
         this.X = x;
         this.Y = y;
     }
+    //this constructor with array parameter of coordinates: coordinates[0] = x, coordinates[1] = y
+    public Point(double[] coordinates) {
+        this.X = coordinates[0];
+        this.Y = coordinates[1];
+    }
+
+
 
     private double setRandomCoordinate() {
         double d = ThreadLocalRandom.current().nextDouble(0, 100);
