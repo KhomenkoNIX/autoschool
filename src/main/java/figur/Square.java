@@ -1,68 +1,102 @@
 package figur;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Square extends Figure {
 
-    private Point A;
-    private Point B;
-    private Point C;
-    private Point D;
-    private String name;
-    private double area;
-
-    public double getArea() {
-        return area;
-    }
-
-    public Point getA() {
-        return A;
-    }
-
-    public Point getB() {
-        return B;
-    }
-
-    public Point getC() {
-        return C;
-    }
-
-    public Point getD() {
-        return D;
-    }
+    private final Point A;
+    private final Point B;
+    private final Point C;
+    private final Point D;
+    private final String name;
+    private final double area;
 
     public Square() {
         //set random diagonal points of square
         A = new Point();
         C = new Point();
-        calculateSquareTwoPoints(A, C);
-        name = setRandomName();
-        calculateArea();
+        B = new Point(calculateBPointCoordinate(A, C));
+        D = new Point(calculateBPointCoordinate(A, C));
+        name = super.setRandomName();
+        area = calculateArea();
     }
 
+    public Square(Point a, Point c) {
+        //set  diagonal points of square
+        this.A = a;
+        this.C = c;
+        B = new Point(calculateBPointCoordinate(A, C));
+        D = new Point(calculateBPointCoordinate(A, C));
+        name = super.setRandomName();
+        area = calculateArea();
+    }
     //constructor with offset - not to cross figures
 
     public Square(double offset) {
         //set random diagonal points of square
         A = new Point(offset);
         C = new Point(offset);
-        calculateSquareTwoPoints(A, C);
+        B = new Point(calculateBPointCoordinate(A, C));
+        D = new Point(calculateBPointCoordinate(A, C));
         name = setRandomName();
-        calculateArea();
+        this.area = calculateArea();
+
     }
 
-    private void calculateSquareTwoPoints(Point A, Point C) {
+    public double getArea() {
+        return area;
+    }
+
+    /*private Map<String, Double> calculateSquareCoordinatesBPointAndD(Point a, Point c) {
+        //creating collection of coordinates for B and D points.
+        Map<String, Double> coordinatesBAndD = new HashMap<String, Double>();
         // calculate center point of crossing diagonal
-        double x0 = (A.getX() + C.getX()) / 2;
-        double y0 = (A.getY() + C.getY()) / 2;
+        double x0 = (a.getX() + c.getX()) / 2;
+        double y0 = (a.getY() + c.getY()) / 2;
         //calculate vector of the point
-        double xVector = A.getX() - x0;
-        double yVector = A.getY() - y0;
+        double xVector = a.getX() - x0;
+        double yVector = a.getY() - y0;
         // Point B coordinates:
         double xB = x0 - yVector;
         double yB = y0 + xVector;
-        B = new Point(xB, yB);
+        coordinatesBAndD.put("xB", xB);
+        coordinatesBAndD.put("yB", yB);
+        // Point D coordinates:
         double xD = x0 + yVector;
         double yD = y0 - xVector;
-        D = new Point(xD, yD);
+        coordinatesBAndD.put("xD", xD);
+        coordinatesBAndD.put("yD", yD);
+        return coordinatesBAndD;
+    } */
+    private double[] calculateBPointCoordinate(Point a, Point c) {
+
+        // calculate center point of crossing diagonal
+        double x0 = (a.getX() + c.getX()) / 2;
+        double y0 = (a.getY() + c.getY()) / 2;
+        //calculate vector of the point
+        double xVector = a.getX() - x0;
+        double yVector = a.getY() - y0;
+        // Point B coordinates:
+        double xB = x0 - yVector;
+        double yB = y0 + xVector;
+        double[] coordinatesB = new double[]{xB, yB};
+        return coordinatesB;
+    }
+
+    private double[] calculateDPointCoordinates(Point a, Point c) {
+        // calculate center point of crossing diagonal
+        double x0 = (a.getX() + c.getX()) / 2;
+        double y0 = (a.getY() + c.getY()) / 2;
+        //calculate vector of the point
+        double xVector = a.getX() - x0;
+        double yVector = a.getY() - y0;
+        ;
+        // Point D coordinates:
+        double xD = x0 + yVector;
+        double yD = y0 - xVector;
+        double[] coordinatesD = new double[]{xD, yD};
+        return coordinatesD;
     }
 
     @Override
@@ -71,13 +105,14 @@ public class Square extends Figure {
         return points;
     }
 
-
-    public void calculateArea() {
+    //@Override
+    private double calculateArea() {
         //formula: side AB = √(xb - xa)pow2 + (yb - ya)pow2
-        double AB = Math.sqrt(Math.pow((A.getX() - B.getX()), 2) + Math.pow((A.getY() - B.getY()), 2));
-        area = AB * AB;
+        double sideAB = Math.sqrt(Math.pow((A.getX() - B.getX()), 2) + Math.pow((A.getY() - B.getY()), 2));
+        double area = sideAB * sideAB;
         // cut area to two signs after a dot
         area = roundTwoSigns(area);
+        return area;
     }
 
     @Override

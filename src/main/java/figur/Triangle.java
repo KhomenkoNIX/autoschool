@@ -2,9 +2,9 @@ package figur;
 
 public class Triangle extends Figure {
 
-    private Point A;
-    private Point B;
-    private Point C;
+    private final Point A;
+    private final Point B;
+    private final Point C;
     private String name;
     private double area;
 
@@ -12,29 +12,26 @@ public class Triangle extends Figure {
         A = new Point();
         B = new Point();
         C = new Point();
-        name = setRandomName();
-        calculateArea();
-
+        name = super.setRandomName();
+        area = calculateArea();
     }
+
+    public Triangle(Point a, Point b, Point c) {
+        this.A = a;
+        this.B = b;
+        this.C = c;
+        name = setRandomName();
+        area = calculateArea();
+    }
+
     public Triangle(double offset) {
         A = new Point(offset);
         B = new Point(offset);
         C = new Point(offset);
         name = setRandomName();
-        calculateArea();
+        this.area = calculateArea();
     }
 
-    public Point getA() {
-        return A;
-    }
-
-    public Point getB() {
-        return B;
-    }
-
-    public Point getC() {
-        return C;
-    }
 
     @Override
     public double getArea() {
@@ -47,12 +44,12 @@ public class Triangle extends Figure {
         return points;
     }
 
-    @Override
-    public void calculateArea() {
+    private double calculateArea() {
         //formula Geron: S = 1/2 * (x2-x1)*(y3-y1)-(x3-x1)(y2-y1)
         area = Math.abs(0.5 * ((B.getX() - A.getX()) * (C.getY() - A.getY()) - (C.getX() - A.getX()) * (B.getY() - A.getY())));
         // cut area to two signs after a dot
         area = roundTwoSigns(area);
+        return area;
     }
 
     @Override

@@ -4,8 +4,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Figure {
 
-    public abstract void calculateArea();
-
     public abstract String getName();
 
     public abstract double getArea();
@@ -25,7 +23,7 @@ public abstract class Figure {
         return d;
     }
 
-    public String setRandomName() {
+    public final String setRandomName() {
         String[] list = new String[]{"Pavel", "Antonio", "Hose", "Igor", "Dimon", "Ernesto", "Semen", "Edward", "Serega", "Koljan"};
         int i = ThreadLocalRandom.current().nextInt(0, 10);
         return list[i];

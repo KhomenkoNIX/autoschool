@@ -18,21 +18,33 @@ package figur;
 - вывести отсортированный массив на консоли в виде : Имя, S=площадь*/
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) {
+    //I didn't catch how to make RefreshButton to work well so added here this variable: to try dispose method etc
+    DrawShapes drawShapes;
 
-        Figure[] arr = createFiguresArray(10, 100);
-        Figure[] sortedArray = sortingArrayByArea(arr);
+    public DrawShapes getDrawShapes() {
+        return drawShapes;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        //creating array of not crossing 10 random figures
+        Main main = new Main();
+        Figure[] array = main.createFiguresArray(10, 0);
+        Figure[] sortedArray = sortingArrayByArea(array);
         showArray(sortedArray);
+
+        //draw figures in app
+        main.startDrawApp(sortedArray);
     }
 
     //method of creating figures array with parameters : size of array and variable offset by x coordinate- in order not to cross figures
-    public static Figure[] createFiguresArray(int size, double offset) {
+    public Figure[] createFiguresArray(int size, double offset) {
 
-        Figure[] figures = new Figure[10];
+        Figure[] figures = new Figure[size];
         Random random = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < size; i++) {
 
             int x = random.nextInt(2 + 1);
             switch (x) {
@@ -49,7 +61,7 @@ public class Main {
                     figures[i] = triangle;
                 default:
             }
-            offset += 100;
+            offset += 190;
         }
         return figures;
     }
@@ -73,5 +85,13 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i].toString());
         }
+    }
+
+    public void startDrawApp(Figure[] figure) {
+        drawShapes = new DrawShapes(figure);
+    }
+
+    public void updateUI() {
+        drawShapes.p.updateUI();
     }
 }

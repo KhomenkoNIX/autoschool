@@ -2,32 +2,32 @@ package figur;
 
 public class Circle extends Figure {
 
-    private Point A;
-    private Point B;
-    private String name;
-    private double area;
+    private final Point A;
+    private final Point B;
+    private final String name;
+    private final double area;
 
+    // constructor with random Points
     public Circle() {
         A = new Point();
         B = new Point();
-        name = setRandomName();
-        calculateArea();
+        name = super.setRandomName();
+        area = calculateArea();
+    }
+
+    public Circle(Point a, Point b) {
+        this.A = a;
+        this.B = b;
+        name = super.setRandomName();
+        area = calculateArea();
     }
 
     //constructor with offset - not to cross figures
     public Circle(double offset) {
         A = new Point(offset);
         B = new Point(offset);
-        name = setRandomName();
-        calculateArea();
-    }
-
-    public Point getA() {
-        return A;
-    }
-
-    public Point getB() {
-        return B;
+        name = super.setRandomName();
+        area = calculateArea();
     }
 
     public double getArea() {
@@ -40,14 +40,14 @@ public class Circle extends Figure {
         return points;
     }
 
-    @Override
-    public void calculateArea() {
+    private double calculateArea() {
         //formula S = Pi * r * r;
         //formula: radius = √(xb - xa)pow2 + (yb - ya)pow2
         double radius = Math.sqrt(Math.pow((A.getX() - B.getX()), 2) + Math.pow((A.getY() - B.getY()), 2));
-        area = Math.PI * radius * radius;
+        double area = Math.PI * radius * radius;
         // cut area to two signs after a dot
         area = roundTwoSigns(area);
+        return area;
     }
 
     @Override
